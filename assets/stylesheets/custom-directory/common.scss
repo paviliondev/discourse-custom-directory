@@ -1,0 +1,30 @@
+.custom-directory-page {
+  .user-info .user-detail {
+    .name {
+      margin-left: 0
+    }
+
+    .name, .username {
+      color: $primary-high;
+      font-weight: 600;
+    }
+
+    &:hover {
+      .name, .username, .title {
+        color: $primary-very-high;
+      }
+    }
+  }
+
+  .directory tbody td {
+    color: $primary-very-high;
+  }
+
+  .header {
+    margin-bottom: 33px;
+
+    h1 {
+      font-size: 2.2em;
+    }
+  }
+}

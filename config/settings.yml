@@ -1,0 +1,4 @@
+plugins:
+  custom_directory_enabled:
+    default: true
+    client: true

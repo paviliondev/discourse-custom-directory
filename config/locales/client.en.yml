@@ -1,0 +1,10 @@
+en:
+  js:
+    custom_directory:
+      show_more: "Show More"
+      show_less: "Show Less"
+      email: "Email"
+      phone_number: "Phone Number"
+      organization: "Organization"
+      corporate_title: "Title"
+      title: "User Directory"

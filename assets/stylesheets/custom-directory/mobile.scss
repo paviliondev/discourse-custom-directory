@@ -1,0 +1,24 @@
+.custom-directory-page {
+  .header {
+    margin-top: 22px;
+
+    h1 {
+      font-size: 1.7em;
+    }
+  }
+
+  .custom-directory-item-info {
+    width: 100%;
+    display: flex;
+    color: $primary-very-high;
+  }
+
+  .custom-directory-item-info-left {
+    width: 40%;
+    font-weight: 600;
+  }
+
+  .custom-directory-item-info-right {
+    flex: 1
+  }
+}
