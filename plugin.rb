@@ -1,4 +1,4 @@
-# name: custom-drectory
+# name: custom-directory
 # version: 0.1.0
 # author: Muhlis Cahyono (muhlisbc@gmail.com)
 # url: https://github.com/paviliondev/discourse-custom-directory
@@ -17,7 +17,12 @@ after_initialize do
     load File.expand_path("lib/#{i}.rb", __dir__)
   end
 
-  %i[email phone_number organization corporate_title].each do |k|
+  %i[
+    email
+    phone_number
+    organization
+    corporate_title
+  ].each do |k|
     add_to_serializer(:directory_item, k) do
       object.user.send(k)
     end
