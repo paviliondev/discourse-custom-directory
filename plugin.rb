@@ -1,5 +1,5 @@
 # name: custom-directory
-# version: 0.1.0
+# version: 0.1.1
 # author: Muhlis Cahyono (muhlisbc@gmail.com)
 # url: https://github.com/paviliondev/discourse-custom-directory
 

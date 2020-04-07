@@ -18,6 +18,10 @@ function initWithApi(api) {
     actions: {
       toggleShowMore() {
         this.toggleProperty("isShowMore");
+
+        if (!this.get("isShowMore")) {
+          this.set("period", defaultPeriod);
+        }
       }
     },
 
