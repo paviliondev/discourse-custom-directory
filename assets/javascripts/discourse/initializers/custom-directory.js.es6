@@ -54,7 +54,7 @@ function initWithApi(api) {
     }
   });
 
-  api.modifyClass("component:directory-toggle", {
+  api.modifyClass("component:table-header-toggle", {
     @discourseComputed("field", "labelKey", "rawLabel")
     title(field, labelKey, rawLabel) {
       if (rawLabel) return rawLabel;
