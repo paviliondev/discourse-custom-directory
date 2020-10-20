@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # name: custom-directory
 # version: 1.0.0
 # author: Muhlis Cahyono (muhlisbc@gmail.com)
