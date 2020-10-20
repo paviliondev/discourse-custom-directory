@@ -27,4 +27,7 @@ after_initialize do
       object.user.send(k)
     end
   end
+  add_to_serializer(:directory_item, :website) do
+    object.user.user_profile.website
+  end
 end

@@ -17,6 +17,7 @@ class DirectoryItemsController
     else
       result = result.includes(user: :primary_group)
     end
+    result = result.includes(user: :user_profile)
 
     if params[:exclude_usernames]
       result = result.references(:user).where.not(users: { username: params[:exclude_usernames].split(",") })

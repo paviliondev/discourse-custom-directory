@@ -1,6 +1,8 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import discourseComputed from "discourse-common/utils/decorators";
 import { iconNode } from "discourse-common/lib/icon-library";
+import Group from "discourse/models/group";
+import { observes } from "discourse-common/utils/decorators";
 
 function initWithApi(api) {
   if (!Discourse.SiteSettings.custom_directory_enabled) return;
@@ -14,6 +16,9 @@ function initWithApi(api) {
     order: defaultOrder,
     asc: defaultAsc,
     isShowMore: false,
+    groupFinder(term) {
+      return Group.findAll({ term: term, ignore_automatic: false });
+    },
 
     actions: {
       toggleShowMore() {
@@ -22,7 +27,11 @@ function initWithApi(api) {
         if (!this.get("isShowMore")) {
           this.set("period", defaultPeriod);
         }
-      }
+      },
+      updateGroupParam(groupNames, selectedGroups){
+        console.log(selectedGroups)
+        this.set('group', selectedGroups[0]);
+      },
     },
 
     @discourseComputed("isShowMore")

@@ -8,3 +8,5 @@ en:
       organization: "Organization"
       corporate_title: "Title"
       title: "User Directory"
+      website: Website
+      filter_by_group: "Filter by group"
