@@ -9,4 +9,3 @@ Required user fields name (case sensitive):
 ## Licence
 
 [GNU General Public Licence, Version 2](./LICENSE.txt)
-

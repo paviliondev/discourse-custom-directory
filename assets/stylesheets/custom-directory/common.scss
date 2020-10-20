@@ -1,16 +1,19 @@
 .custom-directory-page {
   .user-info .user-detail {
     .name {
-      margin-left: 0
+      margin-left: 0;
     }
 
-    .name, .username {
+    .name,
+    .username {
       color: $primary-high;
       font-weight: 600;
     }
 
     &:hover {
-      .name, .username, .title {
+      .name,
+      .username,
+      .title {
         color: $primary-very-high;
       }
     }

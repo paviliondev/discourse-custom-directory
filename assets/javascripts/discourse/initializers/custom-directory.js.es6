@@ -28,16 +28,16 @@ function initWithApi(api) {
           this.set("period", defaultPeriod);
         }
       },
-      updateGroupParam(groupNames, selectedGroups){
-        console.log(selectedGroups)
-        this.set('group', selectedGroups[0]);
+      updateGroupParam(groupNames, selectedGroups) {
+        console.log(selectedGroups);
+        this.set("group", selectedGroups[0]);
       },
     },
 
     @discourseComputed("isShowMore")
     showMoreBtnLabel(isShowMore) {
       return `custom_directory.show_${isShowMore ? "less" : "more"}`;
-    }
+    },
   });
 
   api.modifyClass("route:users", {
@@ -57,10 +57,10 @@ function initWithApi(api) {
           asc: defaultAsc,
           name: "",
           group: null,
-          exclude_usernames: null
+          exclude_usernames: null,
         });
       }
-    }
+    },
   });
 
   api.modifyClass("component:table-header-toggle", {
@@ -79,10 +79,10 @@ function initWithApi(api) {
       } else {
         this.setProperties({ order: this.field, asc: false });
       }
-    }
+    },
   });
 
-  api.decorateWidget("header-icons:before", dec => {
+  api.decorateWidget("header-icons:before", (dec) => {
     const title = I18n.t("custom_directory.title");
     const icon = dec.h(
       "a.icon.btn-flat",
@@ -91,8 +91,8 @@ function initWithApi(api) {
           href: "/u",
           title,
           "aria-label": title,
-          id: "user-directory-icon"
-        }
+          id: "user-directory-icon",
+        },
       },
       iconNode("users")
     );
@@ -106,5 +106,5 @@ export default {
 
   initialize() {
     withPluginApi("0.8", initWithApi);
-  }
+  },
 };
