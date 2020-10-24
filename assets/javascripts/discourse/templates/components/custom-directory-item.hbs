@@ -2,7 +2,11 @@
 
 {{#unless isShowMore}}
   {{#each customDirectoryFields as |f|}}
+    {{#if (is-website f)}}
+    <td><a href="{{get item f}}">{{get item f}}</a></td>
+    {{else}}
     <td>{{get item f}}</td>
+    {{/if}}
   {{/each}}
 {{else}}
   <td>{{number item.likes_received}}</td>

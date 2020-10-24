@@ -3,6 +3,7 @@ import discourseComputed from "discourse-common/utils/decorators";
 import { iconNode } from "discourse-common/lib/icon-library";
 import Group from "discourse/models/group";
 import { observes } from "discourse-common/utils/decorators";
+import { registerUnbound } from "discourse-common/lib/helpers";
 
 function initWithApi(api) {
   if (!Discourse.SiteSettings.custom_directory_enabled) return;
@@ -11,13 +12,19 @@ function initWithApi(api) {
   const defaultOrder = "name";
   const defaultAsc = true;
 
+  registerUnbound('is-website', function(value) {
+    return value == 'website';
+  });
+
   api.modifyClass("controller:users", {
     period: defaultPeriod,
     order: defaultOrder,
     asc: defaultAsc,
     isShowMore: false,
-    groupFinder(term) {
-      return Group.findAll({ term: term, ignore_automatic: false });
+    @discourseComputed('group')
+    selectedGroupId(group) {
+      let selectedGroup =  this.get('availableGroups').find(item=>item.name === group);
+      return selectedGroup ? selectedGroup.id : -1;
     },
 
     actions: {
@@ -28,9 +35,8 @@ function initWithApi(api) {
           this.set("period", defaultPeriod);
         }
       },
-      updateGroupParam(groupNames, selectedGroups) {
-        console.log(selectedGroups);
-        this.set("group", selectedGroups[0]);
+      updateGroupParam(selectedGroups, currentSelection) {
+          this.set('group', currentSelection ? currentSelection.name : null);
       },
     },
 
@@ -61,6 +67,18 @@ function initWithApi(api) {
         });
       }
     },
+
+    setupController(controller, params) {
+      this._super(...arguments);
+      controller.set('availableGroups', this._availableGroups);
+    },
+
+    afterModel(model) {
+      return Group.findAll().then(groups => {
+        this.set('_availableGroups', groups);
+        return model;
+      });
+    }
   });
 
   api.modifyClass("component:table-header-toggle", {
@@ -82,23 +100,6 @@ function initWithApi(api) {
     },
   });
 
-  api.decorateWidget("header-icons:before", (dec) => {
-    const title = I18n.t("custom_directory.title");
-    const icon = dec.h(
-      "a.icon.btn-flat",
-      {
-        attributes: {
-          href: "/u",
-          title,
-          "aria-label": title,
-          id: "user-directory-icon",
-        },
-      },
-      iconNode("users")
-    );
-
-    return dec.h("li", icon);
-  });
 }
 
 export default {

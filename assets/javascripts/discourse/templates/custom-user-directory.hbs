@@ -18,13 +18,14 @@
           {{/if}}
 
           {{text-field value=nameInput placeholderKey="directory.filter_name" class="filter-name no-blur"}}
-          {{group-selector
-            groupNames=groupNames
-            onChangeCallback= (action "updateGroupParam")
-            single=true
-            placeholderKey='custom_directory.filter_by_group'
-            groupFinder=groupFinder}}
 
+          {{group-chooser
+          content=availableGroups
+          singleSelect=true
+          class="directory-group-filter"
+          value=selectedGroupId
+          onChange=(action "updateGroupParam")
+          labelProperty='custom_directory.filter_by_group'}}
         </div>
 
         {{#conditional-loading-spinner condition=model.loading}}
@@ -35,10 +36,8 @@
                 {{table-header-toggle field="name" order=order asc=asc rawLabel=(i18n "directory.total_rows" count=model.totalRows)}}
                 {{#unless isShowMore}}
                   <th>{{i18n "custom_directory.email"}}</th>
+                  <th>{{i18n "custom_directory.website"}}</th>
                   <th>{{i18n "custom_directory.phone_number"}}</th>
-                  <th>Website</th>
-                  <th>{{i18n "custom_directory.organization"}}</th>
-                  <th>{{i18n "custom_directory.corporate_title"}}</th>
                 {{else}}
                   {{table-header-toggle field="likes_received" order=order asc=asc icon="heart"}}
                   {{table-header-toggle field="likes_given" order=order asc=asc icon="heart"}}

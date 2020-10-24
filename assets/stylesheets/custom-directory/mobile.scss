@@ -26,4 +26,12 @@
     display: flex;
     flex-direction: column;
   }
+
+  .directory-group-filter {
+    .select-kit-body {
+      .select-kit-collection {
+        text-align: left;
+      }
+    }
+  }
 }

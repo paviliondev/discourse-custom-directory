@@ -18,12 +18,13 @@
         {{/if}}
 
         {{text-field value=nameInput placeholderKey="directory.filter_name" class="filter-name no-blur"}}
-        {{group-selector
-            groupNames=groupNames
-            onChangeCallback= (action "updateGroupParam")
-            single=true
-            placeholderKey='custom_directory.filter_by_group'
-            groupFinder=groupFinder}}
+        {{group-chooser
+          content=availableGroups
+          singleSelect=true
+          class="directory-group-filter"
+          value=selectedGroupId
+          onChange=(action "updateGroupParam")
+          labelProperty='custom_directory.filter_by_group'}}
       </div>
 
       {{#conditional-loading-spinner condition=model.loading}}
