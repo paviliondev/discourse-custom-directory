@@ -1,12 +1,12 @@
 en:
   js:
     custom_directory:
-      show_more: "Show More"
-      show_less: "Show Less"
+      show_more: "Show Topic"
+      show_less: "Show Info"
       email: "Email"
       phone_number: "Phone Number"
       organization: "Organization"
       corporate_title: "Title"
       title: "User Directory"
       website: Website
-      filter_by_group: "Filter by group"
+      filter_by_group: "Filter by Group"
