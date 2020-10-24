@@ -1,0 +1,10 @@
+zh_CN:
+  js:
+  custom_directory:
+    show_more: "显示主题"
+    show_less: "显示信息"
+    email: "邮箱"
+    phone_number: "电话号码"
+    title: "用户中心"
+    website: "反馈网址"
+    filter_by_group: "按部门筛选"
